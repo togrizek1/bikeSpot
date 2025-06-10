@@ -9,7 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-/* 1️⃣  serve the React build */
+/* 1️⃣  static React build */
 app.use(express.static(path.join(__dirname, 'dist')));
 
 /* 2️⃣  proxy every /api/* request */
@@ -34,9 +34,9 @@ app.use('/api', async (req, res) => {
     }
 });
 
-/* 3️⃣  history-fallback for React Router */
-app.get('*', (_, res) =>
+/* 3️⃣  SPA history-fallback */
+app.get('/:path(*)', (_, res) =>
     res.sendFile(path.join(__dirname, 'dist', 'index.html')),
 );
 
-app.listen(PORT, () => console.log(`✔️  server listening on ${PORT}`));
+app.listen(PORT, () => console.log(`✔ server listening on ${PORT}`));
