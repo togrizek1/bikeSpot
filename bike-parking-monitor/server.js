@@ -1,22 +1,25 @@
-import 'dotenv/config';
+/* eslint-env node */
+import 'dotenv/config';            // loads .env → process.env
 import express from 'express';
 import fetch from 'node-fetch';
 import path from 'node:path';
 import { fileURLToPath } from 'url';
 import { Buffer } from 'buffer';
 
+/* ─────────────────────────────────────────────────────────────── */
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-/* 1️⃣  static React build */
+/* 1️⃣  Serve the static React build (vite build → dist/) */
 app.use(express.static(path.join(__dirname, 'dist')));
 
-/* 2️⃣  proxy every /api/* request */
+/* 2️⃣  Proxy every request that starts with /api/ */
 app.use('/api', async (req, res) => {
     try {
-        const target = req.originalUrl.replace(/^\/api/, '');
-        const upstream = await fetch(`https://djx.entlab.hr${target}`, {
+        const targetPath = req.originalUrl.replace(/^\/api/, '');
+        const upstream = await fetch(`https://djx.entlab.hr${targetPath}`, {
             headers: {
                 Accept: 'application/vnd.ericsson.m2m.output+json',
                 Authorization:
@@ -34,9 +37,13 @@ app.use('/api', async (req, res) => {
     }
 });
 
-/* 3️⃣  SPA history-fallback */
-app.get('/:path(*)', (_, res) =>
+/* 3️⃣  History-API fallback for React Router
+       (runs ONLY if no previous middleware matched) */
+app.use((_, res) =>
     res.sendFile(path.join(__dirname, 'dist', 'index.html')),
 );
 
-app.listen(PORT, () => console.log(`✔ server listening on ${PORT}`));
+/* 4️⃣  Start the server */
+app.listen(PORT, () =>
+    console.log(`✔  Server running on http://localhost:${PORT}`),
+);
