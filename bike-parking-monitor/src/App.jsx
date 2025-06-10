@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import HomePage from './pages/homepage/Homepage.jsx';
+import HomePage from './pages/homePage/Homepage.jsx';
 import ParkingPage from './pages/parkingPage/ParkingPage.jsx';
 
 export default function App() {
