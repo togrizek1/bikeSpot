@@ -3,7 +3,6 @@ import express from 'express';
 import fetch from 'node-fetch';
 import path from 'node:path';
 import { fileURLToPath } from 'url';
-import process from 'process';
 import { Buffer } from 'buffer';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -13,8 +12,8 @@ const PORT = process.env.PORT || 8080;
 /* 1️⃣  serve the React build */
 app.use(express.static(path.join(__dirname, 'dist')));
 
-/* 2️⃣  /api → Ericsson proxy  */
-app.get('/api/*', async (req, res) => {
+/* 2️⃣  proxy every /api/* request */
+app.use('/api', async (req, res) => {
     try {
         const target = req.originalUrl.replace(/^\/api/, '');
         const upstream = await fetch(`https://djx.entlab.hr${target}`, {
@@ -35,7 +34,7 @@ app.get('/api/*', async (req, res) => {
     }
 });
 
-/* 3️⃣  history-fallback so React Router works */
+/* 3️⃣  history-fallback for React Router */
 app.get('*', (_, res) =>
     res.sendFile(path.join(__dirname, 'dist', 'index.html')),
 );
