@@ -1,0 +1,160 @@
+.wrapper {
+    max-width: 44rem;
+    /* a bit wider */
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.back {
+    color: #0366d6;
+    text-decoration: none;
+    margin-bottom: 1.25rem;
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.title {
+    font-size: 2rem;
+    /* bigger headline */
+    font-weight: 700;
+    margin: 0 0 1.25rem;
+    color: #111;
+}
+
+.status {
+    /* wraps the free/full badge */
+    font-size: 1.25rem;
+    margin: 0 0 1.75rem;
+}
+
+.free,
+.full {
+    /* badge style */
+    padding: 0.15rem 0.6rem;
+    border-radius: 0.4rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.free {
+    color: #0f6b00;
+    background: #e7f7e4;
+}
+
+.full {
+    color: #b90000;
+    background: #ffe5e5;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    color: #222;
+}
+
+.list {
+    list-style: none;
+    /* remove bullets */
+    padding-left: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+    /* space between cards */
+}
+
+.item {
+    /* sensor card */
+    background: #fafafa;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.6rem;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    line-height: 1.45;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* …existing rules stay the same… */
+/* ---------- sensor card ---------- */
+.item {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+
+    /* gradient tint */
+    background: linear-gradient(135deg, #ffffff 0%, #f7f9fc 100%);
+    border: 1px solid #e2e8f0;
+
+    /* LEFT border strip will be recoloured with the modifier classes ↓ */
+    border-left: 6px solid transparent;
+
+    border-radius: 0.75rem;
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+    line-height: 1.45;
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- left-colour strip for status ---------- */
+.item.freeBorder {
+    border-left-color: #10b981;
+    /* emerald-500 */
+}
+
+.item.takenBorder {
+    border-left-color: #ef4444;
+    /* red-500 */
+}
+
+/* ---------- text bits ---------- */
+.sensorId {
+    flex: 1 1 auto;
+    font-weight: 600;
+    color: #222;
+}
+
+/* pill badges (unchanged colours, minor size tweak) */
+.badgeFree,
+.badgeTaken {
+    flex: 0 0 auto;
+    padding: 0.18rem 0.7rem;
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.badgeFree {
+    background: #d1fae5;
+    /* green-100 */
+    color: #065f46;
+    /* green-700 */
+}
+
+.badgeTaken {
+    background: #fee2e2;
+    /* red-100 */
+    color: #991b1b;
+    /* red-700 */
+}
+
+.time {
+    flex: 0 0 auto;
+    font-size: 0.8rem;
+    color: #6b7280;
+    /* gray-500 */
+}

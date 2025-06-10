@@ -1,0 +1,26 @@
+.wrapper {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.heading {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #111;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* optional spinner text */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1rem;
+    color: #555;
+}

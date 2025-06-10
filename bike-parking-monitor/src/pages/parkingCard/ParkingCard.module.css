@@ -1,0 +1,39 @@
+.card {
+    display: block;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+}
+
+.free {
+    background-color: #e8fbe9;
+    /* light green */
+}
+
+.free:hover {
+    background-color: #d8f2d9;
+}
+
+.full {
+    background-color: #ffe5e5;
+    /* light red */
+}
+
+.full:hover {
+    background-color: #ffd7d7;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+    color: #222;
+}
+
+.subtitle {
+    font-size: 0.875rem;
+    margin: 0;
+    color: #555;
+}
